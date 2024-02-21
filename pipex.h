@@ -6,7 +6,7 @@
 /*   By: jlarieux <jlarieux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 14:14:59 by jlarieux          #+#    #+#             */
-/*   Updated: 2024/02/20 15:57:01 by jlarieux         ###   ########.fr       */
+/*   Updated: 2024/02/21 13:48:17 by jlarieux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ typedef struct s_data
 	int				arg_c;
 	int				first_cmd;
 	int				eof_len;
+	int				here_doc;
 	struct s_list	*pid_lst;
 }					t_data;
 
@@ -109,6 +110,12 @@ void	ft_heredoc(t_data *data);
  * @return int 
  */
 int		ft_errors(int argc, t_data *data);
+
+/**
+ * @brief 
+ * 
+ */
+void	ft_fd_error(char *str);
 
 /**
  * @brief 

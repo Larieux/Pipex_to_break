@@ -6,7 +6,7 @@
 /*   By: jlarieux <jlarieux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 15:59:01 by jlarieux          #+#    #+#             */
-/*   Updated: 2024/02/21 12:27:12 by jlarieux         ###   ########.fr       */
+/*   Updated: 2024/02/21 14:11:07 by jlarieux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	pipex(t_data *data, int argc)
 	int	fd_pipe[2];
 	int	prev_fd;
 
-	while (data->arg_c > data->first_cmd)
+	while (data->arg_c >= data->first_cmd)
 	{
 		if (data->arg_c == argc - 1)
 		{
@@ -75,7 +75,7 @@ void	pipex(t_data *data, int argc)
 			do_fork(data, fd_pipe, -1, 0);
 			prev_fd = fd_pipe[1];
 		}
-		else if (data->arg_c == data->first_cmd + 1)
+		else if (data->arg_c == data->first_cmd)
 		{
 			do_fork(data, fd_pipe, prev_fd, 2);
 		}

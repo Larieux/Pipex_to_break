@@ -6,7 +6,7 @@
 /*   By: jlarieux <jlarieux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 15:16:38 by jlarieux          #+#    #+#             */
-/*   Updated: 2024/02/21 11:44:04 by jlarieux         ###   ########.fr       */
+/*   Updated: 2024/02/21 13:51:06 by jlarieux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,24 @@
 
 int	ft_errors(int argc, t_data *data)
 {
-	int		here_len;
-
 	if (argc < 5)
 	{
 		write(2, "please use './pipex infile cmd1 ... cmdn outfile'.\n", 52);
 		return (-1);
 	}
-	here_len = ft_strlen(data->args[1]);
-	if (here_len == 8 && ft_strncmp(data->args[1], "here_doc", 8) == 0)
+	if (ft_strlen(data->args[1]) == 8
+		&& ft_strncmp(data->args[1], "here_doc", 8) == 0)
 	{
+		data->here_doc = 1;
 		data->first_cmd = 3;
 		data->eof_len = ft_strlen(data->args[2]);
 		ft_heredoc(data);
 	}
 	else
+	{
+		data->here_doc = 0;
 		data->first_cmd = 2;
+	}
 	return (0);
 }
 
