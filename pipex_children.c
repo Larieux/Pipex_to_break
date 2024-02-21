@@ -6,7 +6,7 @@
 /*   By: jlarieux <jlarieux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 12:25:38 by jlarieux          #+#    #+#             */
-/*   Updated: 2024/02/21 13:57:08 by jlarieux         ###   ########.fr       */
+/*   Updated: 2024/02/21 15:32:15 by jlarieux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@ void	ft_child(t_data *data, int *fd_pipe)
 	int		fd;
 
 	if (data->here_doc == 1)
-		fd = open(data->args[data->arg_c], O_WRONLY | O_APPEND | O_CREAT, 0644);
+		fd = open(data->args[data->arg_c + 1], O_WRONLY | O_APPEND | O_CREAT, 0644);
 	else
-		fd = open(data->args[data->arg_c], O_WRONLY | O_TRUNC | O_CREAT, 0644);
+		fd = open(data->args[data->arg_c + 1], O_WRONLY | O_TRUNC | O_CREAT, 0644);
 	if (fd == -1)
 		ft_fd_error(data->args[data->arg_c]);
-	cmd = ft_split(data->args[data->arg_c - 1], ' ');
+	cmd = ft_split(data->args[data->arg_c], ' ');
 	if (!cmd || cmd == NULL || cmd[0] == NULL)
 		ft_exit_malloc(cmd);
 	ft_dup_and_close(fd, fd_pipe, 0, 0);
@@ -34,7 +34,7 @@ void	ft_inter_child(t_data *data, int *fd_pipe, int prev_fd)
 {
 	char	**cmd;
 
-	cmd = ft_split(data->args[data->arg_c - 1], ' ');
+	cmd = ft_split(data->args[data->arg_c], ' ');
 	if (!cmd || cmd == NULL || cmd[0] == NULL)
 		ft_exit_malloc(cmd);
 	ft_dup_and_close(-1, fd_pipe, prev_fd, 1);
