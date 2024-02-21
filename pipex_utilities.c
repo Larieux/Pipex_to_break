@@ -6,7 +6,7 @@
 /*   By: jlarieux <jlarieux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 13:24:38 by jlarieux          #+#    #+#             */
-/*   Updated: 2024/02/21 13:55:31 by jlarieux         ###   ########.fr       */
+/*   Updated: 2024/02/21 14:22:05 by jlarieux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	ft_fd_error(char *str)
 	error = ft_strjoin(str, " : ");
 	error2 = ft_strjoin(error, strerror(errno));
 	error3 = ft_strjoin(error2, "\n");
-	errlen = ft_strlen(error2);
+	errlen = ft_strlen(error3);
 	write(2, error3, errlen);
 	free(error);
 	free(error2);
