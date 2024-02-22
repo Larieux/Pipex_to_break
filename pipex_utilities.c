@@ -6,11 +6,22 @@
 /*   By: jlarieux <jlarieux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 13:24:38 by jlarieux          #+#    #+#             */
-/*   Updated: 2024/02/21 15:25:54 by jlarieux         ###   ########.fr       */
+/*   Updated: 2024/02/22 17:11:36 by jlarieux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
+
+int	ft_open(char *str, int role)
+{
+	int	fd;
+
+	if (role == 0)
+		fd = open (str, O_WRONLY | O_APPEND | O_CREAT, 0644);
+	else
+		fd = open (str, O_WRONLY | O_TRUNC | O_CREAT, 0644);
+	return (fd);
+}
 
 void	free_dtab(char **tab)
 {

@@ -6,7 +6,7 @@
 /*   By: jlarieux <jlarieux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 14:14:59 by jlarieux          #+#    #+#             */
-/*   Updated: 2024/02/21 13:48:17 by jlarieux         ###   ########.fr       */
+/*   Updated: 2024/02/22 17:10:46 by jlarieux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,15 @@ typedef struct p_list
 	int				pid;
 	struct s_list	*next;
 }					t_pid_lst;
+
+/**
+ * @brief 
+ * 
+ * @param str 
+ * @param role 
+ * @return int 
+ */
+int		ft_open(char *str, int role);
 
 /**
  * @brief 
