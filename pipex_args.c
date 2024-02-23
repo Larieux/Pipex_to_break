@@ -6,13 +6,13 @@
 /*   By: jlarieux <jlarieux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 15:16:38 by jlarieux          #+#    #+#             */
-/*   Updated: 2024/02/21 13:51:06 by jlarieux         ###   ########.fr       */
+/*   Updated: 2024/02/23 09:11:16 by jlarieux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-int	ft_errors(int argc, t_data *data)
+int	ft_errors(int argc, t_struct *data)
 {
 	if (argc < 5)
 	{
@@ -35,7 +35,7 @@ int	ft_errors(int argc, t_data *data)
 	return (0);
 }
 
-char	**ft_find_paths(t_data *data)
+char	**ft_find_paths(t_struct *data)
 {
 	int		i;
 	char	*path;
@@ -57,7 +57,7 @@ char	**ft_find_paths(t_data *data)
 	return (free (path), paths);
 }
 
-void	ft_find_cmd(t_data *data, char **cmd)
+void	ft_find_cmd(t_struct *data, char **cmd)
 {
 	int		i;
 	int		test_exec;

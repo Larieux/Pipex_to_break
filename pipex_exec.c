@@ -6,13 +6,13 @@
 /*   By: jlarieux <jlarieux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 15:59:01 by jlarieux          #+#    #+#             */
-/*   Updated: 2024/02/22 16:58:52 by jlarieux         ###   ########.fr       */
+/*   Updated: 2024/02/23 09:11:19 by jlarieux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-int	wait_each_pid(t_data *data)
+int	wait_each_pid(t_struct *data)
 {
 	t_list	*lst;
 	int		status;
@@ -29,7 +29,7 @@ int	wait_each_pid(t_data *data)
 	return (status);
 }
 
-void	do_fork(t_data *data, int *fd_pipe, int prev_fd, int role)
+void	do_fork(t_struct *data, int *fd_pipe, int prev_fd, int role)
 {
 	pid_t	pid;
 
@@ -62,7 +62,7 @@ void	do_pipe(int *fd_pipe)
 	}
 }
 
-void	pipex(t_data *data, int argc)
+void	pipex(t_struct *data, int argc)
 {
 	int	fd_pipe[2];
 	int	prev_fd;

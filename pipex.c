@@ -6,7 +6,7 @@
 /*   By: jlarieux <jlarieux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 14:15:02 by jlarieux          #+#    #+#             */
-/*   Updated: 2024/02/21 15:05:12 by jlarieux         ###   ########.fr       */
+/*   Updated: 2024/02/23 09:11:51 by jlarieux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	main(int argc, char **argv, char **envp)
 {
-	t_data	data;
-	int		status;
+	t_struct	data;
+	int			status;
 
 	data.args = argv;
 	if (ft_errors(argc, &data) == -1)

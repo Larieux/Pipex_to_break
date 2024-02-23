@@ -6,13 +6,13 @@
 /*   By: jlarieux <jlarieux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 16:25:13 by jlarieux          #+#    #+#             */
-/*   Updated: 2024/02/21 14:50:20 by jlarieux         ###   ########.fr       */
+/*   Updated: 2024/02/23 09:11:22 by jlarieux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-void	ft_heredoc(t_data *data)
+void	ft_heredoc(t_struct *data)
 {
 	char	*line;
 	int		fd;

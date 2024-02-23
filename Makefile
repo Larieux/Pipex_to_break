@@ -6,7 +6,7 @@
 #    By: jlarieux <jlarieux@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/10 13:59:35 by jlarieux          #+#    #+#              #
-#    Updated: 2024/02/13 16:27:38 by jlarieux         ###   ########.fr        #
+#    Updated: 2024/02/23 09:39:19 by jlarieux         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ OBJ_PATH = obj/
 
 OBJS = ${addprefix ${OBJ_PATH}, ${SRCS:.c=.o}}
 
-CFLAGS = -Wall -Werror -Wextra -g
+CFLAGS = -Wall -Werror -Wextra
 LIB = libft/libft.a
 
 NAME = pipex

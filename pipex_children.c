@@ -6,13 +6,13 @@
 /*   By: jlarieux <jlarieux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 12:25:38 by jlarieux          #+#    #+#             */
-/*   Updated: 2024/02/22 17:10:00 by jlarieux         ###   ########.fr       */
+/*   Updated: 2024/02/23 09:11:18 by jlarieux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-void	ft_child(t_data *data, int *fd_pipe)
+void	ft_child(t_struct *data, int *fd_pipe)
 {
 	char	**cmd;
 	int		fd;
@@ -30,7 +30,7 @@ void	ft_child(t_data *data, int *fd_pipe)
 	ft_find_cmd(data, cmd);
 }
 
-void	ft_inter_child(t_data *data, int *fd_pipe, int prev_fd)
+void	ft_inter_child(t_struct *data, int *fd_pipe, int prev_fd)
 {
 	char	**cmd;
 
@@ -41,7 +41,7 @@ void	ft_inter_child(t_data *data, int *fd_pipe, int prev_fd)
 	ft_find_cmd(data, cmd);
 }
 
-void	ft_child2(t_data *data, int *fd_pipe, int prev_fd)
+void	ft_child2(t_struct *data, int *fd_pipe, int prev_fd)
 {
 	char	**cmd;
 	int		fd;

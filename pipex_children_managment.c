@@ -6,13 +6,13 @@
 /*   By: jlarieux <jlarieux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 14:21:02 by jlarieux          #+#    #+#             */
-/*   Updated: 2024/02/21 12:05:43 by jlarieux         ###   ########.fr       */
+/*   Updated: 2024/02/23 09:11:17 by jlarieux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-void	ft_lst_pid(t_data *data, pid_t pid)
+void	ft_lst_pid(t_struct *data, pid_t pid)
 {
 	t_list	*new_pid_lst;
 
@@ -53,7 +53,7 @@ void	ft_dup_and_close(int fd, int *fd_pipe, int prev_fd, int childno)
 	}
 }
 
-void	ft_execve_error(t_data *data, char **dtab, char **dtab2, char *tab)
+void	ft_execve_error(t_struct *data, char **dtab, char **dtab2, char *tab)
 {
 	int		errorlen;
 	char	*build_error;

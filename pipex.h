@@ -6,7 +6,7 @@
 /*   By: jlarieux <jlarieux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 14:14:59 by jlarieux          #+#    #+#             */
-/*   Updated: 2024/02/22 17:10:46 by jlarieux         ###   ########.fr       */
+/*   Updated: 2024/02/23 09:11:25 by jlarieux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # include <sys/wait.h>
 # include "libft/libft.h"
 
-typedef struct s_data
+typedef struct s_struct
 {
 	char			**args;
 	char			**env;
@@ -32,7 +32,7 @@ typedef struct s_data
 	int				eof_len;
 	int				here_doc;
 	struct s_list	*pid_lst;
-}					t_data;
+}					t_struct;
 
 typedef struct p_list
 {
@@ -76,7 +76,7 @@ void	ft_exit_dfree_malloc(char **tab);
  * @param data 
  * @param pid 
  */
-void	ft_lst_pid(t_data *data, pid_t pid);
+void	ft_lst_pid(t_struct *data, pid_t pid);
 
 /**
  * @brief 
@@ -93,7 +93,7 @@ void	ft_dup_and_close(int fd, int *fd_pipe, int prev_fd, int childno);
  * @param data 
  * @param dtab 
  */
-void	ft_free_node(t_data *data, char **dtab);
+void	ft_free_node(t_struct *data, char **dtab);
 
 /**
  * @brief 
@@ -102,14 +102,14 @@ void	ft_free_node(t_data *data, char **dtab);
  * @param dtab2 
  * @param tab 
  */
-void	ft_execve_error(t_data *data, char **dtab, char **dtab2, char *tab);
+void	ft_execve_error(t_struct *data, char **dtab, char **dtab2, char *tab);
 
 /**
  * @brief 
  * 
  * @param limiter 
  */
-void	ft_heredoc(t_data *data);
+void	ft_heredoc(t_struct *data);
 
 /**
  * @brief 
@@ -118,7 +118,7 @@ void	ft_heredoc(t_data *data);
  * @param data 
  * @return int 
  */
-int		ft_errors(int argc, t_data *data);
+int		ft_errors(int argc, t_struct *data);
 
 /**
  * @brief 
@@ -132,7 +132,7 @@ void	ft_fd_error(char *str);
  * @param data 
  * @return char** 
  */
-char	**ft_find_paths(t_data *data);
+char	**ft_find_paths(t_struct *data);
 
 /**
  * @brief 
@@ -140,22 +140,14 @@ char	**ft_find_paths(t_data *data);
  * @param data 
  * @param cmd 
  */
-void	ft_find_cmd(t_data *data, char **cmd);
+void	ft_find_cmd(t_struct *data, char **cmd);
 
 /**
  * @brief 
  * 
  * @param data 
  */
-int		wait_each_pid(t_data *data);
-
-/**
- * @brief 
- * 
- * @param data 
- * @param fd_pipe 
- */
-void	ft_child(t_data *data, int *fd_pipe);
+int		wait_each_pid(t_struct *data);
 
 /**
  * @brief 
@@ -163,7 +155,7 @@ void	ft_child(t_data *data, int *fd_pipe);
  * @param data 
  * @param fd_pipe 
  */
-void	ft_inter_child(t_data *data, int *fd_pipe, int prev_fd);
+void	ft_child(t_struct *data, int *fd_pipe);
 
 /**
  * @brief 
@@ -171,7 +163,15 @@ void	ft_inter_child(t_data *data, int *fd_pipe, int prev_fd);
  * @param data 
  * @param fd_pipe 
  */
-void	ft_child2(t_data *data, int *fd_pipe, int prev_fd);
+void	ft_inter_child(t_struct *data, int *fd_pipe, int prev_fd);
+
+/**
+ * @brief 
+ * 
+ * @param data 
+ * @param fd_pipe 
+ */
+void	ft_child2(t_struct *data, int *fd_pipe, int prev_fd);
 
 /**
  * @brief 
@@ -187,7 +187,7 @@ void	ft_parent(int *fd_pipe, pid_t pid);
  * @param data 
  * @param fd_pipe 
  */
-void	do_fork(t_data *data, int *fd_pipe, int prev_fd, int role);
+void	do_fork(t_struct *data, int *fd_pipe, int prev_fd, int role);
 
 /**
  * @brief 
@@ -202,6 +202,6 @@ void	do_pipe(int *fd_pipe);
  * @param data 
  * @param argc 
  */
-void	pipex(t_data *data, int argc);
+void	pipex(t_struct *data, int argc);
 
 #endif
