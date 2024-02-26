@@ -6,7 +6,7 @@
 /*   By: jlarieux <jlarieux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 15:16:38 by jlarieux          #+#    #+#             */
-/*   Updated: 2024/02/23 09:11:16 by jlarieux         ###   ########.fr       */
+/*   Updated: 2024/02/26 14:22:46 by jlarieux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,17 +37,20 @@ int	ft_errors(int argc, t_struct *data)
 
 char	**ft_find_paths(t_struct *data)
 {
-	int		i;
+	size_t	i;
 	char	*path;
 	char	**paths;
 
 	i = 0;
 	path = NULL;
-	while (path == NULL)
+	while (i < ft_strlen(*(data)->env))
 	{
-		path = ft_strnstr(data->env[i], "PATH", 4);
+		if (ft_strncmp(data->env[i], "PATH=", 5) == 0)
+			path = data->env[i];
 		i++;
 	}
+	if (path == NULL)
+		return (write(2, "no path from env variables found\n", 34), NULL);
 	path = ft_substr(path, 5, strlen(path) - 5);
 	if (path == NULL)
 		return (write(2, "malloc error\n", 14), NULL);

@@ -1,0 +1,8 @@
+>remove -g in makefile flags
+>use valgrind --trace-children=yes --leak-check=full --show-leak-kinds=all -s --suppressions=leaks ./pipex Makefile "ls -l" "wc -l" "cat -e" mno
+>< Makefile ls -l | wc -l | cat -e > jkl
+>fix fds being the same 										V
+>return what the last (first) command returns 					V
+>close pipes only at the end 									V
+>prev fd 														V
+>check that at the end there is only the 0 1 and 2 fd open
