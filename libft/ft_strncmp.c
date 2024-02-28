@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlarieux <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jlarieux <jlarieux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 15:46:07 by jlarieux          #+#    #+#             */
-/*   Updated: 2023/10/22 15:46:09 by jlarieux         ###   ########.fr       */
+/*   Updated: 2024/02/27 12:50:37 by jlarieux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,7 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 		uc1 = (unsigned char)s1[i];
 		uc2 = (unsigned char)s2[i];
 		if (uc1 != uc2)
-		{
 			return (uc1 - uc2);
-		}
 		i++;
 	}
 	if (i == n)

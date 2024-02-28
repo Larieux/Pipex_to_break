@@ -6,7 +6,7 @@
 /*   By: jlarieux <jlarieux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 14:14:59 by jlarieux          #+#    #+#             */
-/*   Updated: 2024/02/23 09:11:25 by jlarieux         ###   ########.fr       */
+/*   Updated: 2024/02/28 15:11:19 by jlarieux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,15 @@ void	ft_execve_error(t_struct *data, char **dtab, char **dtab2, char *tab);
 /**
  * @brief 
  * 
+ * @param line 
+ * @param fd 
+ * @param line_len 
+ */
+void	ft_r_w_heredoc(char **line, int *fd, int *line_len);
+
+/**
+ * @brief 
+ * 
  * @param limiter 
  */
 void	ft_heredoc(t_struct *data);
@@ -116,9 +125,10 @@ void	ft_heredoc(t_struct *data);
  * 
  * @param argc 
  * @param data 
+ * @param envp 
  * @return int 
  */
-int		ft_errors(int argc, t_struct *data);
+int		ft_errors(int argc, t_struct *data, char **envp);
 
 /**
  * @brief 

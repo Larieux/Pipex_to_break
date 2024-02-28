@@ -6,13 +6,13 @@
 /*   By: jlarieux <jlarieux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 15:16:38 by jlarieux          #+#    #+#             */
-/*   Updated: 2024/02/26 14:22:46 by jlarieux         ###   ########.fr       */
+/*   Updated: 2024/02/27 14:29:03 by jlarieux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-int	ft_errors(int argc, t_struct *data)
+int	ft_errors(int argc, t_struct *data, char **envp)
 {
 	if (argc < 5)
 	{
@@ -32,18 +32,20 @@ int	ft_errors(int argc, t_struct *data)
 		data->here_doc = 0;
 		data->first_cmd = 2;
 	}
+	if (envp[0] == NULL)
+		return (write(2, "no path from env variables found\n", 34), -1);
 	return (0);
 }
 
 char	**ft_find_paths(t_struct *data)
 {
-	size_t	i;
 	char	*path;
 	char	**paths;
+	size_t	i;
 
 	i = 0;
 	path = NULL;
-	while (i < ft_strlen(*(data)->env))
+	while (data->env[i])
 	{
 		if (ft_strncmp(data->env[i], "PATH=", 5) == 0)
 			path = data->env[i];
