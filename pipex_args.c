@@ -6,7 +6,7 @@
 /*   By: jlarieux <jlarieux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 15:16:38 by jlarieux          #+#    #+#             */
-/*   Updated: 2024/02/27 14:29:03 by jlarieux         ###   ########.fr       */
+/*   Updated: 2024/03/14 15:41:16 by jlarieux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,33 @@ char	**ft_find_paths(t_struct *data)
 	return (free (path), paths);
 }
 
+void	ft_exec_van_cmd(char **cmd)
+{
+	char	**van_cmd;
+	char	*van_cmd_args[2];
+	int		i;
+
+	van_cmd = ft_split(cmd[0], '/');
+	i = 0;
+	while (van_cmd[i + 1] != NULL)
+		i++;
+	van_cmd_args[0] = ft_strjoin(van_cmd[i], " ");
+	free_dtab (van_cmd);
+	i = 1;
+	while (cmd[i] != NULL)
+	{
+		van_cmd_args[1] = ft_strjoin(van_cmd_args[0], cmd[i]);
+		free (van_cmd_args[0]);
+		van_cmd_args[0] = ft_strjoin(van_cmd_args[1], " ");
+		free (van_cmd_args[1]);
+		i++;
+	}
+	van_cmd = ft_split(van_cmd_args[0], ' ');
+	free (van_cmd_args[0]);
+	execve(cmd[0], van_cmd, NULL);
+	free_dtab (van_cmd);
+}
+
 void	ft_find_cmd(t_struct *data, char **cmd)
 {
 	int		i;
@@ -86,5 +113,6 @@ void	ft_find_cmd(t_struct *data, char **cmd)
 		free(path_cmd);
 		i++;
 	}
+	ft_exec_van_cmd(cmd);
 	ft_execve_error(data, cmd, paths, slash_cmd);
 }

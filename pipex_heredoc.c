@@ -6,7 +6,7 @@
 /*   By: jlarieux <jlarieux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 16:25:13 by jlarieux          #+#    #+#             */
-/*   Updated: 2024/02/28 15:28:00 by jlarieux         ###   ########.fr       */
+/*   Updated: 2024/03/14 14:18:50 by jlarieux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 void	ft_r_w_heredoc(char **line, int *fd, int *line_len)
 {
-	write(1, "> ", 2);
+	if (*line != NULL)
+		write(1, "> ", 2);
 	write(*fd, *line, *line_len);
 	free(*line);
 	*line = get_next_line(0);
@@ -43,4 +44,5 @@ void	ft_heredoc(t_struct *data)
 		ft_r_w_heredoc(&line, &fd, &line_len);
 	free(line);
 	data->args[2] = "tmp_heredoc";
+	close (fd);
 }
