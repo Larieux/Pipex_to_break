@@ -6,7 +6,7 @@
 #    By: jlarieux <jlarieux@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/18 11:52:19 by jlarieux          #+#    #+#              #
-#    Updated: 2024/03/14 14:07:53 by jlarieux         ###   ########.fr        #
+#    Updated: 2024/03/15 15:01:27 by jlarieux         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ OBJS = ${addprefix ${OBJ_PATH}, ${SRCS:.c=.o}}
 
 OBJSB = ${addprefix ${OBJ_PATH}, ${SRCSB:.c=.o}}
 
-CFLAGS = -Wall -Werror -Wextra -g
+CFLAGS = -Wall -Werror -Wextra
 
 NAME = libft.a
 

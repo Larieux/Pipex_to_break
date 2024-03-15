@@ -6,7 +6,7 @@
 /*   By: jlarieux <jlarieux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 15:16:38 by jlarieux          #+#    #+#             */
-/*   Updated: 2024/03/15 14:41:30 by jlarieux         ###   ########.fr       */
+/*   Updated: 2024/03/15 14:54:40 by jlarieux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ int	ft_errors(int argc, t_struct *data, char **envp)
 		data->here_doc = 0;
 		data->first_cmd = 2;
 	}
-	if (envp[0] == NULL)
-		data->env[0] = NULL;
+	if (envp == NULL)
+		data->env = NULL;
 	else
 		data->env = envp;
 	return (0);
