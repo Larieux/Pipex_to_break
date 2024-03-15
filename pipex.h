@@ -6,7 +6,7 @@
 /*   By: jlarieux <jlarieux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 14:14:59 by jlarieux          #+#    #+#             */
-/*   Updated: 2024/03/14 14:59:20 by jlarieux         ###   ########.fr       */
+/*   Updated: 2024/03/15 14:27:48 by jlarieux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,6 +143,14 @@ void	ft_fd_error(char *str);
  * @return char** 
  */
 char	**ft_find_paths(t_struct *data);
+
+/**
+ * @brief 
+ * 
+ * @param data 
+ * @param cmd 
+ */
+void	ft_exec_van_cmd(t_struct *data, char **cmd);
 
 /**
  * @brief 

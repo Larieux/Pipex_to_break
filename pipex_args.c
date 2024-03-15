@@ -6,7 +6,7 @@
 /*   By: jlarieux <jlarieux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 15:16:38 by jlarieux          #+#    #+#             */
-/*   Updated: 2024/03/14 15:41:16 by jlarieux         ###   ########.fr       */
+/*   Updated: 2024/03/15 14:41:30 by jlarieux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,9 @@ int	ft_errors(int argc, t_struct *data, char **envp)
 		data->first_cmd = 2;
 	}
 	if (envp[0] == NULL)
-		return (write(2, "no path from env variables found\n", 34), -1);
+		data->env[0] = NULL;
+	else
+		data->env = envp;
 	return (0);
 }
 
@@ -52,7 +54,7 @@ char	**ft_find_paths(t_struct *data)
 		i++;
 	}
 	if (path == NULL)
-		return (write(2, "no path from env variables found\n", 34), NULL);
+		return (NULL);
 	path = ft_substr(path, 5, strlen(path) - 5);
 	if (path == NULL)
 		return (write(2, "malloc error\n", 14), NULL);
@@ -62,7 +64,7 @@ char	**ft_find_paths(t_struct *data)
 	return (free (path), paths);
 }
 
-void	ft_exec_van_cmd(char **cmd)
+void	ft_exec_van_cmd(t_struct *data, char **cmd)
 {
 	char	**van_cmd;
 	char	*van_cmd_args[2];
@@ -85,7 +87,7 @@ void	ft_exec_van_cmd(char **cmd)
 	}
 	van_cmd = ft_split(van_cmd_args[0], ' ');
 	free (van_cmd_args[0]);
-	execve(cmd[0], van_cmd, NULL);
+	execve(cmd[0], van_cmd, data->env);
 	free_dtab (van_cmd);
 }
 
@@ -98,21 +100,19 @@ void	ft_find_cmd(t_struct *data, char **cmd)
 	char	*path_cmd;
 
 	paths = ft_find_paths(data);
-	if (paths == NULL)
-		exit(EXIT_FAILURE);
 	slash_cmd = ft_strjoin("/", cmd[0]);
 	if (slash_cmd == NULL || !slash_cmd)
 		ft_exit_dfree_malloc(paths);
 	test_exec = -1;
 	i = 0;
-	while (test_exec == -1 && paths[i] != NULL)
+	while (test_exec == -1 && paths != NULL && paths[i] != NULL)
 	{
 		path_cmd = ft_strjoin(paths[i], slash_cmd);
 		free(paths[i]);
-		test_exec = execve(path_cmd, cmd, NULL);
+		test_exec = execve(path_cmd, cmd, data->env);
 		free(path_cmd);
 		i++;
 	}
-	ft_exec_van_cmd(cmd);
+	ft_exec_van_cmd(data, cmd);
 	ft_execve_error(data, cmd, paths, slash_cmd);
 }
