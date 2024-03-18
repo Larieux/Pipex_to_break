@@ -6,7 +6,7 @@
 /*   By: jlarieux <jlarieux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 16:27:46 by jlarieux          #+#    #+#             */
-/*   Updated: 2024/01/12 14:08:11 by jlarieux         ###   ########.fr       */
+/*   Updated: 2024/03/18 15:51:04 by jlarieux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,9 @@ size_t	ft_strlen_gnl(const char *s)
 	if (s == NULL)
 		return (0);
 	while (s[i])
+	{
 		i++;
+	}
 	return (i);
 }
 

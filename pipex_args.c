@@ -6,7 +6,7 @@
 /*   By: jlarieux <jlarieux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 15:16:38 by jlarieux          #+#    #+#             */
-/*   Updated: 2024/03/15 14:54:40 by jlarieux         ###   ########.fr       */
+/*   Updated: 2024/03/18 16:55:48 by jlarieux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,12 @@
 int	ft_errors(int argc, t_struct *data, char **envp)
 {
 	if (argc < 5)
-	{
-		write(2, "please use './pipex infile cmd1 ... cmdn outfile'.\n", 52);
-		return (-1);
-	}
+		return (write(2, "too few arguments\n", 19), -1);
 	if (ft_strlen(data->args[1]) == 8
 		&& ft_strncmp(data->args[1], "here_doc", 8) == 0)
 	{
+		if (argc < 6)
+			return (write(2, "too few arguments\n", 19), -1);
 		data->here_doc = 1;
 		data->first_cmd = 3;
 		data->eof_len = ft_strlen(data->args[2]);
